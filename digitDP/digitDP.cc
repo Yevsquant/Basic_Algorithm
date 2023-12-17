@@ -3,7 +3,9 @@
 
 using namespace std;
 
-const int N = 10;
+const int N = 12;
+int a[N];
+int f[N][10];
 
 void print_array(int arr[], int n) {
   for (int i = 0; i < n; i ++) {
@@ -13,14 +15,28 @@ void print_array(int arr[], int n) {
   return;
 }
 
-int main() {
-  int cnt = 0;
-  int x;
-  int arr[N];
-  cin >> x;
-  while (x) {
-    arr[cnt++] = x % 10;
-    x /= 10;
+void init() {
+  for (int i = 0; i <= 9; i ++) f[1][i] = 1;
+  for (int i = 2; i <= N; i ++) {
+    for (int j = 0; j <= 9; j ++) {
+      for (int k = 0; k <= 9; k ++) {
+        if (abs(j - k) >= 2) f[i][j] += f[i-1][k];
+      }
+    }
   }
-  print_array(arr, cnt);
+}
+
+int main() {
+  memset(a, 0, sizeof(a));
+  memset(f, 0, sizeof(f));
+  init();
+
+  for (int i = 0; i < N; i ++) {
+    for (int j = 0; j < 10; j ++) {
+      cout << f[i][j] << " ";
+    }
+    cout << endl;
+  }
+
+  return 0;
 }
