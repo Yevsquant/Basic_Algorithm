@@ -48,6 +48,7 @@ int dp(int x) {
   return res;
 }
 
+// this is based on the question: Windy numbers
 int main() {
   memset(a, 0, sizeof(a));
   memset(f, 0, sizeof(f));
