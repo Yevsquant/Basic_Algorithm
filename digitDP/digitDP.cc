@@ -31,7 +31,7 @@ int dp(int x) {
   int cnt = 0;
   while (x) a[++cnt] = x % 10, x /= 10; // store the digits in an arr
 
-  int res = 0, last = -2;
+  int res = 0, last = -1;
   for (int i = cnt; i > 0; i --) {
     for (int j = (i==cnt); j < a[i]; j ++) {
       if (abs(j - last) >= 2) res += f[i][j];
